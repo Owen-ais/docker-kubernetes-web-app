@@ -1,1 +1,19 @@
-
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docker-kubernetes-web-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: docker-kubernetes-web-app
+  template:
+    metadata:
+      labels:
+        app: docker-kubernetes-web-app
+    spec:
+      containers:
+        - name: web-app
+          image: owen14/docker-kubernetes-web-app:latest
+          ports:
+            - containerPort: 80
